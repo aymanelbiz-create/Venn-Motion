@@ -1,0 +1,249 @@
+/* Native Store Index integration. Active only where the Store fragment is present. */
+body:has(#venn-store):not(.sqs-edit-mode):not(.sqs-edit-mode-active) main.Index > .Index-page:not(:has(#venn-store)),
+body:has(#venn-store):not(.sqs-edit-mode):not(.sqs-edit-mode-active) main.Index > .Index-nav,
+body:has(#venn-store):not(.sqs-edit-mode):not(.sqs-edit-mode-active) .Index-page:has(#venn-store) > .Index-page-scroll-indicator { display:none !important; }
+body:has(#venn-store):not(.sqs-edit-mode):not(.sqs-edit-mode-active) .sqs-layout:has(#venn-store) .sqs-block:not(:has(#venn-store)),
+body:has(#venn-store):not(.sqs-edit-mode):not(.sqs-edit-mode-active) .sqs-layout:has(#venn-store) .sqs-row:not(:has(#venn-store)),
+body:has(#venn-store):not(.sqs-edit-mode):not(.sqs-edit-mode-active) .sqs-layout:has(#venn-store) [class*="sqs-col-"]:not(:has(#venn-store)) { display:none !important; }
+body:has(#venn-store) .Index-page:has(#venn-store) { background:#fff; height:auto !important; min-height:0 !important; }
+body:has(#venn-store) .Index-page:has(#venn-store) > .Index-page-content { width:100%;max-width:none;margin:0;padding:0; }
+body:has(#venn-store) .sqs-layout:has(#venn-store),
+body:has(#venn-store) .sqs-layout:has(#venn-store) > .sqs-row { margin:0;padding:0; }
+body:has(#venn-store) .sqs-layout:has(#venn-store) [class*="sqs-col-"]:has(#venn-store) { width:100%;float:none;margin:0;padding:0; }
+body:has(#venn-store) .sqs-block-code:has(#venn-store) { width:100%;margin:0;padding:0 !important; }
+body:has(#venn-store) .sqs-block-code:has(#venn-store) > .sqs-block-content { margin:0;padding:0; }
+/* A standalone Not Linked layout page uses the same content without a second main landmark. */
+body:has(#venn-store) .Main-content:has(#venn-store) { width:100%;max-width:none;padding:0; }
+
+/* Store V3 content only. Values shared with the approved V33 stylesheet;
+   never installed over .vac, native header/footer or commerce styles. */
+#venn-store{
+  --vs-paper:#fff;--vs-stone:#eff0ef;--vs-ink:#1e1e1e;--vs-secondary:#4a4e4b;--vs-muted:#646b67;
+  --vs-line:rgba(31,27,23,.13);--vs-line-2:rgba(31,27,23,.3);--vs-focus:#1a5fd6;
+  --vs-display:"bely-display",Georgia,"Times New Roman",serif;--vs-serif:"bely",Georgia,"Times New Roman",serif;
+  --vs-sans:"Work Sans","Helvetica Neue",Arial,sans-serif;--vs-gutter:clamp(16px,4vw,56px);
+  --vs-max:1440px;--vs-sec:clamp(64px,7.2vw,108px);--vs-r:14px;--vs-r-l:24px;--vs-ease:cubic-bezier(.2,.7,.2,1);
+  background:var(--vs-paper);color:var(--vs-ink);font:400 16px/1.55 var(--vs-sans);letter-spacing:0;-webkit-font-smoothing:antialiased;
+}
+#venn-store *,#venn-store *::before,#venn-store *::after{box-sizing:border-box}
+#venn-store :where(h1,h2,h3,p,figure,blockquote,ul,dl,dd){margin:0;padding:0}
+#venn-store :where(h1,h2,h3){color:inherit;font-weight:400;text-transform:none;letter-spacing:-.025em}
+#venn-store :where(h1,h2){font-family:var(--vs-display);line-height:1.02}
+#venn-store h2{font-size:clamp(34px,4.4vw,64px)}
+#venn-store a{color:inherit;text-decoration-thickness:1px;text-underline-offset:3px}
+#venn-store img{display:block;max-width:100%;height:auto}
+#venn-store button{font:inherit;color:inherit;cursor:pointer}
+#venn-store [hidden]{display:none!important}
+#venn-store :focus-visible{outline:2px solid var(--vs-focus);outline-offset:3px}
+#venn-store section[id]{scroll-margin-top:96px}
+#venn-store .vs-wrap{max-width:var(--vs-max);padding-inline:var(--vs-gutter);margin-inline:auto}
+#venn-store .vs-kicker{font-size:12.5px;line-height:1.5;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#545454}
+#venn-store .vs-small{font-size:12.5px;line-height:1.55;color:var(--vs-muted)}
+#venn-store .vs-intro{font-size:18px;line-height:1.55}
+#venn-store .vs-button{display:inline-flex;justify-content:center;align-items:center;gap:20px;min-height:56px;border:1px solid var(--vs-ink);border-radius:999px;padding:14px 22px;background:var(--vs-ink);color:#fff;font-size:15.5px;font-weight:600;line-height:1.2;letter-spacing:.01em;text-align:center;text-decoration:none;transition:background .18s var(--vs-ease),transform .18s var(--vs-ease)}
+#venn-store .vs-button:hover{background:#000}
+#venn-store .vs-button:active{transform:scale(.985)}
+#venn-store .vs-button span,#venn-store .vs-text-link span{font-size:18px;line-height:1}
+#venn-store .vs-text-link{display:inline-flex;align-items:center;gap:12px;min-height:44px;font-size:14px;font-weight:600;text-decoration:underline}
+#venn-store .vs-text-link:hover{color:var(--vs-secondary)}
+#venn-store .vs-price-note{font-size:12.5px;line-height:1.55;margin-top:10px;color:var(--vs-secondary)}
+#venn-store .vs-skip{position:absolute;left:20px;z-index:40;transform:translateY(-3000px);padding:12px;background:#fff}
+#venn-store .vs-skip:focus{transform:none}
+/* The Store uses V33's editorial display scale, not its compact purchase-panel H1. */
+#venn-store .vs-hero{max-width:var(--vs-max);margin:auto;padding:32px var(--vs-gutter) 24px;display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.3fr);grid-template-rows:auto 1fr;column-gap:44px;row-gap:0}
+#venn-store .vs-hero-heading{padding:20px 0 0;align-self:end}
+#venn-store .vs-hero h1{font-size:clamp(44px,4.8vw,68px);line-height:1.02;margin-top:20px;letter-spacing:-.025em}
+#venn-store .vs-hero h1 em{font-style:normal}
+#venn-store .vs-hero-intro{padding:22px 0 20px;max-width:410px}
+#venn-store .vs-hero-intro>p:first-child{font-size:16px;line-height:1.55;color:var(--vs-secondary);margin-bottom:24px;max-width:370px}
+#venn-store .vs-hero-photo{grid-column:2;grid-row:1 / 3;position:relative;min-height:490px;border-radius:var(--vs-r-l);overflow:hidden}
+#venn-store .vs-hero-photo>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:48% 50%}
+#venn-store .vs-hero-photo figcaption{position:absolute;left:20px;bottom:18px;border-radius:10px;background:#fffffff0;font-size:12px;padding:6px 10px}
+/* Native header is the only sticky UI. */
+#venn-store .vs-shopnav{display:flex;justify-content:center;gap:clamp(20px,5vw,72px);max-width:var(--vs-max);margin:auto;padding:8px var(--vs-gutter) 20px}
+#venn-store .vs-shopnav a{display:flex;align-items:center;gap:10px;min-height:44px;font-size:14px;font-weight:500;white-space:nowrap;text-decoration:none}
+#venn-store .vs-shopnav a:hover{text-decoration:underline}
+#venn-store .vs-shopnav span{color:var(--vs-muted);font-size:11px}
+#venn-store .vs-air{padding-top:48px;padding-bottom:64px}
+#venn-store .vs-section-head{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:end;margin-bottom:30px}
+#venn-store .vs-section-head h2{margin-top:12px}
+#venn-store .vs-head-copy{max-width:390px;justify-self:end}
+#venn-store .vs-head-copy p{margin-bottom:10px;color:var(--vs-secondary)}
+#venn-store .vs-air-context{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:20px;margin-bottom:26px}
+#venn-store .vs-air-context figure{position:relative;overflow:hidden;border-radius:var(--vs-r-l);height:410px}
+#venn-store .vs-air-context img{width:100%;height:100%;object-fit:cover}
+#venn-store .vs-air-life img{object-position:50% 40%}
+#venn-store .vs-air-texture img{object-position:50% 50%}
+#venn-store .vs-air-context figcaption{position:absolute;left:18px;bottom:16px;max-width:calc(100% - 36px);background:#fffffff0;padding:6px 10px;border-radius:10px;font-size:12px;line-height:1.5}
+#venn-store .vs-air-context figcaption a{display:inline-flex;align-items:center;gap:8px;min-height:32px}
+#venn-store .vs-browse{padding-bottom:6px}
+#venn-store .vs-filters{display:flex;gap:8px;flex-wrap:wrap}
+#venn-store .vs-filters button{border:1px solid var(--vs-line-2);border-radius:999px;background:#fff;min-height:44px;padding:8px 19px;font-size:13.5px;font-weight:500;white-space:nowrap}
+#venn-store .vs-filters button[aria-pressed=true]{border-color:var(--vs-ink);box-shadow:inset 0 0 0 1px var(--vs-ink);font-weight:600}
+#venn-store .vs-filters button:hover{background:var(--vs-stone)}
+#venn-store .vs-finish-list{list-style:none;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#bcc0bd transparent;padding:16px 0 20px}
+#venn-store .vs-finish-list li{flex:0 0 calc((100% - 64px)/5);min-width:0;scroll-snap-align:start}
+#venn-store .vs-finish-list a{display:block;text-decoration:none;border-radius:var(--vs-r)}
+#venn-store .vs-finish-list figure{aspect-ratio:1.14;display:flex;align-items:center;justify-content:center;border-radius:var(--vs-r);background:#f7f7f7;margin-bottom:12px;overflow:hidden}
+#venn-store .vs-finish-list figure img{width:90%;height:90%;object-fit:contain;transition:transform .2s var(--vs-ease)}
+#venn-store .vs-finish-list a:hover figure img{transform:scale(1.035)}
+#venn-store .vs-product-type{font-size:11.5px;line-height:1.5;color:var(--vs-muted);min-height:34px}
+#venn-store .vs-finish-list h3{display:flex;justify-content:space-between;gap:8px;font:600 17px/1.4 var(--vs-sans);letter-spacing:0;margin-bottom:3px}
+#venn-store .vs-finish-list h3 span{font-size:17px;font-weight:400}
+#venn-store .vs-finish-list a>p:last-child{font-size:14px;font-weight:500}
+#venn-store .vs-browse-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px}
+#venn-store .vs-swipe-hint{font-size:12.5px;color:var(--vs-muted)}
+#venn-store .vs-rail-controls{display:flex;gap:8px;align-items:center;flex-shrink:0}
+#venn-store .vs-rail-controls>span{font-size:12px;min-width:36px}
+#venn-store .vs-rail-controls button{width:44px;height:44px;border:1px solid var(--vs-line-2);border-radius:999px;background:white;font-size:20px}
+#venn-store .vs-rail-controls button:disabled{opacity:.3;cursor:default}
+#venn-store .vs-rail-foot{display:flex;justify-content:space-between;gap:20px;font-size:13px;color:var(--vs-secondary)}
+#venn-store .vs-rail-foot>p:first-child{max-width:440px}
+#venn-store .vs-collection-layout:not([data-filter="edit"]){display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:48px;align-items:center}
+#venn-store .vs-collection-layout:not([data-filter="edit"]) .vs-finish-list li{flex-basis:calc((100% - 32px)/3)}
+#venn-store .vs-collection-layout .vs-finish-list[data-count="1"] li{flex-basis:60%;max-width:320px}
+#venn-store .vs-collection-layout .vs-finish-list[data-count="2"] li{flex-basis:calc((100% - 16px)/2)}
+#venn-store .vs-collection-story{max-width:360px;padding:22px 0}
+#venn-store .vs-collection-story h3{font:400 clamp(28px,3vw,42px)/1.1 var(--vs-display);margin:12px 0 16px}
+#venn-store .vs-collection-story>p:not(.vs-kicker){font-size:14px;line-height:1.55;color:var(--vs-secondary);margin-bottom:12px}
+/* Real Solar interior is the editorial set moment. Other views retain labelled original package photos. */
+#venn-store .vs-sets{max-width:var(--vs-max);margin:auto;padding:32px var(--vs-gutter) 0}
+#venn-store .vs-set-heading{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:28px}
+#venn-store .vs-set-heading h2{margin-top:12px}
+#venn-store .vs-set-heading>p{justify-self:end;max-width:390px;color:var(--vs-secondary)}
+#venn-store .vs-package-choices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:22px}
+#venn-store .vs-package-pick{display:flex;gap:12px;align-items:center;min-height:78px;text-align:left;padding:9px 12px;border:1px solid var(--vs-line);border-radius:12px;background:#f7f7f7}
+#venn-store .vs-package-pick[aria-pressed=true]{border-color:var(--vs-ink);box-shadow:inset 0 0 0 1px var(--vs-ink);background:#fff}
+#venn-store .vs-package-pick img{width:62px;height:50px;object-fit:contain;mix-blend-mode:multiply}
+#venn-store .vs-package-pick strong{display:block;font-size:13px;font-weight:600;line-height:1.3}
+#venn-store .vs-package-pick small{display:block;font-size:12px;line-height:1.4;color:var(--vs-muted);margin-top:4px}
+#venn-store .vs-package-panel{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:42px;align-items:center}
+#venn-store .vs-package-panel>figure{position:relative;background:var(--vs-stone);border-radius:var(--vs-r-l);overflow:hidden;min-height:465px;display:flex;align-items:center;justify-content:center}
+#venn-store .vs-package-panel>figure>img{width:94%;height:400px;object-fit:contain;mix-blend-mode:multiply}
+#venn-store .vs-package-panel>figure.vs-package-life>img{width:100%;height:465px;object-fit:cover;mix-blend-mode:normal}
+#venn-store .vs-package-panel figcaption{position:absolute;left:18px;bottom:16px;max-width:calc(100% - 36px);border-radius:10px;padding:6px 10px;font-size:12px;background:#fffffff0}
+#venn-store .vs-package-copy{padding-block:8px;min-width:0}
+#venn-store .vs-package-purpose{font-size:14px;color:var(--vs-secondary);margin-bottom:10px}
+#venn-store .vs-package-copy h3{font:400 clamp(28px,2.8vw,40px)/1.1 var(--vs-display)}
+#venn-store .vs-package-price{font:600 31px/1.2 var(--vs-sans);margin:14px 0 18px;letter-spacing:-.02em}
+#venn-store .vs-package-pieces{list-style:none;display:grid;gap:7px}
+#venn-store .vs-package-pieces li{display:grid;grid-template-columns:22px 1fr;column-gap:10px;font-size:14px;line-height:1.5}
+#venn-store .vs-package-pieces li>span{grid-row:span 2;align-self:start;font-size:12px;line-height:22px;text-align:center;border-radius:5px;background:var(--vs-stone)}
+#venn-store .vs-package-pieces small{grid-column:2;font-size:12px;color:var(--vs-muted)}
+#venn-store .vs-package-note{font-size:12.5px;line-height:1.55;color:var(--vs-secondary);margin:16px 0 18px;max-width:400px}
+#venn-store .vs-package-copy .vs-button{width:100%}
+#venn-store .vs-all-sets{margin-top:16px}
+#venn-store .vs-cushions{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:64px;padding-top:var(--vs-sec);padding-bottom:64px;align-items:center}
+#venn-store .vs-cushion-images{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+#venn-store .vs-cushion-images figure{position:relative;border-radius:var(--vs-r-l);overflow:hidden}
+#venn-store .vs-cushion-inuse{margin-top:66px!important}
+#venn-store .vs-cushion-images img{width:100%;height:430px;object-fit:cover}
+#venn-store .vs-cushion-inuse img{object-position:52% 60%}
+#venn-store .vs-cushion-photo figcaption{position:absolute;bottom:14px;left:12px;right:12px;border-radius:10px;background:#fffffff0;padding:6px 9px;font-size:12px;text-align:center}
+#venn-store .vs-cushion-caption{grid-column:1/-1;font-size:12px;line-height:1.5;color:var(--vs-muted);margin-top:2px}
+#venn-store .vs-cushion-copy h2{margin:14px 0 22px}
+#venn-store .vs-cushion-copy .vs-intro{max-width:430px;margin-bottom:18px}
+#venn-store .vs-cushion-copy>p:not([class]){max-width:430px;font-size:14px;color:var(--vs-secondary)}
+#venn-store .vs-specs{display:flex;gap:24px;margin:26px 0;padding-top:20px;border-top:1px solid var(--vs-line)}
+#venn-store .vs-specs dt{font-size:14px;font-weight:600}
+#venn-store .vs-specs dd{font-size:12px;color:var(--vs-muted);margin-top:3px}
+#venn-store .vs-making{max-width:calc(var(--vs-max) - 2 * var(--vs-gutter));margin:32px auto 0;background:var(--vs-stone);border-radius:var(--vs-r-l);padding:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:40px;align-items:center}
+#venn-store .vs-making-copy h2{font-size:clamp(34px,3.4vw,50px);margin:12px 0 20px}
+#venn-store .vs-making-copy .vs-intro{font-size:16px;margin-bottom:16px;max-width:430px}
+#venn-store .vs-making-copy>p:not([class]){font-size:13px;color:var(--vs-secondary);max-width:430px;margin-bottom:6px}
+#venn-store .vs-workshop{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:12px;align-items:start}
+#venn-store .vs-workshop figure{min-width:0}
+#venn-store .vs-workshop img{width:100%;height:310px;object-fit:cover;border-radius:14px}
+#venn-store .vs-cutting img{object-position:35% 50%}
+#venn-store .vs-workshop figcaption{font-size:12px;color:var(--vs-secondary);margin-top:10px;line-height:1.5}
+#venn-store .vs-proof{display:grid;grid-template-columns:1fr 1fr;gap:70px;padding-top:64px;padding-bottom:58px}
+#venn-store .vs-proof blockquote{font:400 clamp(22px,2vw,29px)/1.3 var(--vs-serif);margin:16px 0}
+#venn-store .vs-proof figcaption{font-size:12px;line-height:1.7;color:var(--vs-secondary)}
+#venn-store .vs-proof .vs-press{padding-left:40px;border-left:1px solid var(--vs-line)}
+#venn-store .vs-proof .vs-press blockquote{font-size:clamp(22px,1.75vw,25px)}
+#venn-store .vs-answers{display:grid;grid-template-columns:1fr 1.15fr;gap:70px;padding-top:32px;padding-bottom:40px}
+#venn-store .vs-answers h2{font-size:clamp(34px,3.5vw,52px);margin:14px 0 18px}
+#venn-store .vs-faq details{border-bottom:1px solid var(--vs-line)}
+#venn-store .vs-faq details:first-child{border-top:1px solid var(--vs-line)}
+#venn-store .vs-faq summary{position:relative;list-style:none;cursor:pointer;min-height:60px;padding:18px 30px 18px 0;font-size:14px;font-weight:500}
+#venn-store .vs-faq summary::-webkit-details-marker{display:none}
+#venn-store .vs-faq summary::after{content:'+';position:absolute;right:0;font-size:20px;top:15px}
+#venn-store .vs-faq details[open] summary::after{content:'−'}
+#venn-store .vs-faq details p{font-size:14px;line-height:1.6;color:var(--vs-secondary);padding-bottom:12px}
+#venn-store .vs-faq details>a{display:inline-block;min-height:44px;padding-bottom:18px;font-size:13px;font-weight:600}
+#venn-store .vs-assurances{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-top:20px;padding-bottom:30px;text-align:center}
+#venn-store .vs-assurances a{padding:20px 8px;border:1px solid var(--vs-line);border-radius:12px;text-decoration:none;display:flex;flex-direction:column;gap:4px}
+#venn-store .vs-assurances strong{font-size:13px;font-weight:600}
+#venn-store .vs-assurances span{font-size:12px;color:var(--vs-muted)}
+#venn-store .vs-last{display:flex;gap:30px;align-items:center;justify-content:space-between;padding-top:20px;padding-bottom:52px}
+#venn-store .vs-last>p{font:400 24px/1.2 var(--vs-serif);max-width:240px}
+#venn-store .vs-last a{display:inline-flex;align-items:center;gap:12px;min-height:44px;font-size:13px;font-weight:600}
+@media(max-width:1100px){
+ #venn-store .vs-hero{column-gap:28px}#venn-store .vs-hero-photo{min-height:460px}#venn-store .vs-package-pick img{width:44px}#venn-store .vs-package-panel{gap:28px}
+ #venn-store .vs-cushions{gap:36px}#venn-store .vs-specs{gap:16px}#venn-store .vs-making{margin-inline:var(--vs-gutter);padding:28px;gap:28px}#venn-store .vs-workshop img{height:330px}
+}
+@media(max-width:899px){
+ #venn-store .vs-hero{grid-template-columns:1fr 1.2fr;column-gap:24px}#venn-store .vs-hero h1{font-size:44px}#venn-store .vs-hero-intro>p:first-child{font-size:15px}
+ #venn-store .vs-section-head,#venn-store .vs-set-heading{gap:28px}#venn-store .vs-air-context figure{height:340px}
+ #venn-store .vs-package-choices{grid-template-columns:repeat(2,minmax(0,1fr))}#venn-store .vs-package-panel{grid-template-columns:1.1fr 1fr;gap:24px}#venn-store .vs-package-panel>figure{min-height:420px}#venn-store .vs-package-panel>figure.vs-package-life>img{height:420px}#venn-store .vs-package-panel>figure>img{height:340px}
+ #venn-store .vs-package-copy h3{font-size:30px}#venn-store .vs-package-copy .vs-button{font-size:14px;padding-inline:16px}
+ #venn-store .vs-cushions{gap:28px}#venn-store .vs-cushion-images img{height:350px}#venn-store .vs-cushion-inuse{margin-top:38px!important}#venn-store .vs-cushion-copy .vs-intro{font-size:16px}#venn-store .vs-specs{gap:14px;flex-wrap:wrap}
+ #venn-store .vs-making{grid-template-columns:1fr;gap:28px}#venn-store .vs-making-copy{max-width:650px}#venn-store .vs-making-copy h2{font-size:42px}#venn-store .vs-making-copy .vs-intro,#venn-store .vs-making-copy>p:not([class]){max-width:600px}#venn-store .vs-workshop img{height:250px}
+ #venn-store .vs-proof{gap:36px}#venn-store .vs-proof .vs-press{padding-left:28px}#venn-store .vs-answers{gap:36px}#venn-store .vs-last{flex-wrap:wrap;gap:16px}#venn-store .vs-last>p{max-width:none;flex-basis:100%}
+}
+@media(max-width:639px){
+ #venn-store .vs-kicker{font-size:11.5px;letter-spacing:.12em}#venn-store h2{font-size:38px}
+ #venn-store .vs-hero{display:flex;flex-direction:column;padding-top:24px;padding-bottom:12px;gap:0}
+ #venn-store .vs-hero-heading{order:0;padding:0;align-self:stretch}#venn-store .vs-hero h1{font-size:clamp(38px,10.8vw,48px);margin-top:14px}
+ #venn-store .vs-hero-intro{order:1;padding:18px 0 22px;max-width:none}#venn-store .vs-hero-intro>p:first-child{font-size:15px;margin-bottom:18px;max-width:400px}#venn-store .vs-hero-intro .vs-button{width:100%}#venn-store .vs-hero-intro .vs-price-note{text-align:center;margin-top:8px}
+ #venn-store .vs-hero-photo{order:2;min-height:0;height:auto;aspect-ratio:1.33;border-radius:20px}#venn-store .vs-hero-photo>img{object-position:48% 50%}#venn-store .vs-hero-photo figcaption{left:12px;bottom:12px;font-size:11px;padding:5px 8px}
+ #venn-store .vs-shopnav{gap:0;justify-content:space-between;padding:4px var(--vs-gutter) 16px}#venn-store .vs-shopnav a{font-size:12px;gap:0}#venn-store .vs-shopnav span{display:none}
+ #venn-store .vs-air{padding-top:40px;padding-bottom:44px}#venn-store .vs-section-head{display:block;margin-bottom:22px}#venn-store .vs-section-head h2{margin-top:10px}#venn-store .vs-head-copy{margin-top:20px;max-width:none}#venn-store .vs-head-copy p{font-size:15px;margin-bottom:4px}
+ #venn-store .vs-air-context{grid-template-columns:1.35fr 1fr;gap:10px;margin-bottom:22px}#venn-store .vs-air-context figure{height:290px;border-radius:18px}#venn-store .vs-air-life img{object-position:54% 67%}#venn-store .vs-air-context figcaption{position:static;padding:0;margin:0;border-radius:0}#venn-store .vs-air-life figcaption{position:absolute;left:8px;bottom:10px;max-width:calc(100% - 16px);background:#fffffff0;padding:5px 7px;border-radius:8px;font-size:11px}#venn-store .vs-air-texture figcaption{position:absolute;left:8px;bottom:10px;max-width:calc(100% - 16px);background:#fffffff0;padding:4px 7px;border-radius:8px;font-size:11px}#venn-store .vs-air-texture figcaption a{min-height:44px}
+ #venn-store .vs-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}#venn-store .vs-filters button{min-height:44px;padding:7px 5px;font-size:13px}
+ #venn-store .vs-finish-list{gap:14px;padding:16px 0 18px}#venn-store .vs-finish-list li{flex-basis:calc((100% - 20px)/2.12)}#venn-store .vs-finish-list figure{margin-bottom:10px;aspect-ratio:1}
+ #venn-store .vs-product-type{font-size:11px;min-height:34px}#venn-store .vs-finish-list h3{font-size:16px}#venn-store .vs-finish-list a>p:last-child{font-size:14px}
+ #venn-store .vs-swipe-hint{font-size:12px;max-width:190px}#venn-store .vs-rail-controls{gap:6px}#venn-store .vs-rail-controls>span{font-size:11px;min-width:28px}
+ #venn-store .vs-rail-foot{display:block;font-size:12.5px}#venn-store .vs-rail-foot .vs-small{margin-top:7px;font-size:12px}
+ #venn-store .vs-collection-layout:not([data-filter="edit"]){display:block}#venn-store .vs-collection-layout:not([data-filter="edit"]) .vs-finish-list li{flex-basis:calc((100% - 20px)/2.12)}#venn-store .vs-collection-layout .vs-finish-list[data-count="1"] li{flex-basis:64%}#venn-store .vs-collection-layout .vs-finish-list[data-count="2"] li{flex-basis:calc((100% - 14px)/2)}#venn-store .vs-collection-story{padding:0 0 18px}#venn-store .vs-collection-story h3{font-size:32px}
+ #venn-store .vs-sets{padding-top:24px}#venn-store .vs-set-heading{display:block;margin-bottom:22px}#venn-store .vs-set-heading>p{margin-top:18px;font-size:15px}#venn-store .vs-set-heading>p br{display:none}
+ #venn-store .vs-package-choices{gap:8px;margin-bottom:16px}#venn-store .vs-package-pick{gap:8px;padding:10px 8px;min-height:88px}#venn-store .vs-package-pick img{width:38px;height:42px}#venn-store .vs-package-pick strong{font-size:12.5px}#venn-store .vs-package-pick small{font-size:11.5px}
+ #venn-store .vs-package-panel{display:flex;flex-direction:column;gap:22px;align-items:stretch}#venn-store .vs-package-panel>figure{min-height:0;height:290px;border-radius:20px}#venn-store .vs-package-panel>figure>img{height:250px;width:96%}#venn-store .vs-package-panel>figure.vs-package-life>img{height:290px;width:100%;object-position:50% 52%}
+ #venn-store .vs-package-panel figcaption{left:12px;bottom:12px;font-size:11px;padding:5px 8px;max-width:calc(100% - 24px)}#venn-store .vs-package-copy{padding:0}#venn-store .vs-package-purpose{font-size:13px;margin-bottom:8px}#venn-store .vs-package-copy h3{font-size:34px}#venn-store .vs-package-price{font-size:29px;margin:12px 0 16px}#venn-store .vs-package-pieces{gap:8px}#venn-store .vs-package-note{margin:16px 0;font-size:12.5px}#venn-store .vs-package-copy .vs-button{font-size:14px}
+ #venn-store .vs-cushions{display:flex;flex-direction:column;gap:28px;padding-top:60px;padding-bottom:44px;align-items:stretch}#venn-store .vs-cushion-images{gap:10px}#venn-store .vs-cushion-images img{height:290px}#venn-store .vs-cushion-inuse{margin-top:32px!important}#venn-store .vs-cushion-caption{font-size:11.5px;margin-top:2px}#venn-store .vs-cushion-photo figcaption{left:8px;right:8px;bottom:10px;font-size:11px;padding:5px 6px}#venn-store .vs-cushion-copy h2{margin:10px 0 20px}#venn-store .vs-cushion-copy .vs-intro{font-size:17px;max-width:none}#venn-store .vs-cushion-copy .vs-button{width:100%}#venn-store .vs-specs{gap:22px;margin:22px 0}#venn-store .vs-specs dt{font-size:13px}#venn-store .vs-specs dd{font-size:11px}
+ #venn-store .vs-making{margin:16px var(--vs-gutter) 0;padding:24px 18px;gap:24px;border-radius:20px}#venn-store .vs-making-copy h2{font-size:36px;margin:12px 0 20px}#venn-store .vs-making-copy .vs-intro{font-size:15px}#venn-store .vs-workshop{grid-template-columns:1.2fr 1fr;gap:10px}#venn-store .vs-workshop img{height:200px;border-radius:12px}#venn-store .vs-workshop figcaption{font-size:11px;margin-top:8px}
+ #venn-store .vs-proof{display:block;padding-top:44px;padding-bottom:24px}#venn-store .vs-proof blockquote{font-size:24px;margin:12px 0}#venn-store .vs-proof figcaption{font-size:11.5px}#venn-store .vs-proof .vs-press{padding:24px 0 0;margin-top:24px;border-left:0;border-top:1px solid var(--vs-line)}#venn-store .vs-proof .vs-press blockquote{font-size:22px}
+ #venn-store .vs-answers{display:block;padding-top:32px;padding-bottom:28px}#venn-store .vs-answers h2{font-size:36px}#venn-store .vs-faq{margin-top:26px}#venn-store .vs-faq summary{font-size:14px;min-height:64px;padding-top:20px}#venn-store .vs-faq details p{font-size:14px}
+ #venn-store .vs-assurances{gap:8px;padding-top:12px;padding-bottom:18px}#venn-store .vs-assurances a{padding:14px 6px;gap:6px}#venn-store .vs-assurances strong{font-size:11.5px;line-height:1.4}#venn-store .vs-assurances span{font-size:11px;line-height:1.4}
+ #venn-store .vs-last{display:grid;grid-template-columns:1fr;padding-top:20px;padding-bottom:36px;gap:6px}#venn-store .vs-last>p{font-size:24px;margin-bottom:14px}#venn-store .vs-last a{font-size:14px;justify-content:space-between}
+}
+@media(max-width:359px){#venn-store .vs-package-pick{gap:6px;padding:8px 6px}#venn-store .vs-package-pick img{width:28px}#venn-store .vs-package-pick strong{font-size:12px}#venn-store .vs-package-pick small{font-size:11px}#venn-store .vs-specs{gap:16px}#venn-store .vs-air-context figure{height:250px}#venn-store .vs-cushion-images img{height:250px}#venn-store .vs-shopnav a{font-size:11px}}
+@media(prefers-reduced-motion:reduce){#venn-store *,#venn-store *::before,#venn-store *::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+/* Keep the complete photographed Solar pair in frame; tighten the page around it. */
+#venn-store .vs-package-panel{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+#venn-store .vs-package-panel>figure.vs-package-life{aspect-ratio:4/3;min-height:0}
+#venn-store .vs-package-panel>figure.vs-package-life>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#venn-store .vs-air-context figure{height:380px}
+#venn-store .vs-cushions{padding-top:80px}
+#venn-store .vs-proof{padding-top:48px;padding-bottom:40px}
+@media(max-width:899px){#venn-store .vs-air-context figure{height:340px}}
+@media(max-width:639px){
+ #venn-store .vs-hero-photo{aspect-ratio:1.45}
+ #venn-store .vs-air{padding-top:32px;padding-bottom:36px}
+ #venn-store .vs-air-context figure{height:270px}
+ #venn-store .vs-set-heading>p{margin-top:14px}
+ #venn-store .vs-package-panel{gap:18px}
+ #venn-store .vs-package-panel>figure.vs-package-life{height:auto;aspect-ratio:4/3}
+ #venn-store .vs-cushions{padding-top:48px;gap:24px}
+ #venn-store .vs-cushion-images img{height:270px}
+ #venn-store .vs-making{padding-block:20px}
+ #venn-store .vs-workshop img{height:184px}
+ #venn-store .vs-proof{padding-top:36px;padding-bottom:20px}
+ #venn-store .vs-answers{padding-top:24px}
+}
+@media(max-width:359px){#venn-store .vs-air-context figure{height:250px}#venn-store .vs-cushion-images img{height:250px}}
+/* Studio package captions sit in reserved space, clear of the lower cushions. */
+#venn-store .vs-package-panel>figure:not(.vs-package-life){padding-bottom:40px}
+#venn-store .vs-package-panel>figure:not(.vs-package-life)>img{height:350px}
+@media(max-width:899px){#venn-store .vs-package-panel>figure:not(.vs-package-life)>img{height:320px}}
+@media(max-width:639px){#venn-store .vs-package-panel>figure:not(.vs-package-life)>img{height:210px}}
