@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" fill="none">
+<title>Felt and foam — material illustration</title>
+<desc>Two padding layers based on Venn’s construction diagram: a thin cream felt sheet above a soft white foam layer. Schematic, not to scale.</desc>
+<defs>
+ <pattern id="fibres" width="43" height="31" patternUnits="userSpaceOnUse"><path d="m4 9 9-3m9 17 10 2M31 5l6 5M4 27l7-2" stroke="#b8ab91" stroke-width=".8" opacity=".5"/></pattern>
+ <clipPath id="top"><path d="M94 187Q88 180 104 169L294 67Q305 62 318 67L543 163Q557 169 542 180L344 288Q332 294 318 288Z"/></clipPath>
+ <clipPath id="foam"><path d="m95 209 226 104q12 6 24 0l198-108v53q0 8-11 14L346 372q-13 6-26 0L103 269q-9-4-8-15Z"/></clipPath>
+</defs>
+<path fill="#e8e4dc" d="M0 0h640v400H0z"/>
+<path d="m98 227 223 103q12 6 25 0l195-107v32L346 362q-13 6-26 0L99 259Z" fill="#ccc8bb" opacity=".35"/>
+<path d="m95 209 226 104q12 6 24 0l198-108v53q0 8-11 14L346 372q-13 6-26 0L103 269q-9-4-8-15Z" fill="#f5f3eb"/>
+<path d="m333 317 210-112v53q0 8-11 14L346 372q-7 3-13 3Z" fill="#deded3"/>
+<g clip-path="url(#foam)" stroke="#babfb4" opacity=".6" stroke-width="1.4"><path d="M63 229q29-22 61-2t63 13 71 24 63 21 63-1 68-34 64-9 67-28M58 247q36 17 64 0t59 18 70 17 75 30 65-15 70-27 65-3 67-25M78 271q30-18 62 4t60 11 62 29 68 18 68-14 67-31 75-6M97 295q30-12 66 9t68 13 63 30 62 0 75-30 62-7 68-24M121 327q36-13 65 6t67 9 68 28 65-14 66-22 69-7"/></g>
+<path d="m96 208 222 102q15 7 28 0l197-106-1-15-197 107q-13 7-27 0L95 193Z" fill="#cfc4a9"/>
+<path d="M94 187Q88 180 104 169L294 67Q305 62 318 67L543 163Q557 169 542 180L344 288Q332 294 318 288Z" fill="#ded3b9"/>
+<g clip-path="url(#top)"><path fill="url(#fibres)" d="M75 55h500v260H75z"/></g>
+<path d="m108 178 204 97q19 9 34 0l188-103" stroke="#f5eddb" stroke-width="1.3"/>
+</svg>
